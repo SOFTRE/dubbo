@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+			    http://www.springframework.org/schema/beans/spring-beans.xsd
+			    http://www.springframework.org/schema/context
+			    http://www.springframework.org/schema/context/spring-context.xsd
+			    http://www.springframework.org/schema/aop
+			    http://www.springframework.org/schema/aop/spring-aop.xsd
+			    http://code.alibabatech.com/schema/dubbo
+			    http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+			    http://www.springframework.org/schema/tx
+			    http://www.springframework.org/schema/tx/spring-tx.xsd
+			    http://www.springframework.org/schema/mvc
+			    http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+    <!--zookeeper中的应用名称，用在zookeeper中管理dubbo注册，订阅的服务名称，名称不能相同-->
+    <dubbo:application name="dubbo_demo_provider"></dubbo:application>
+    <!--    2.dubbo连接zookeeper,zookeeper的默认启动端口是2181-->
+    <dubbo:registry address="zookeeper://localhost:2181"></dubbo:registry>
+    <!--    3.服务提供者定义dubbo提供的协议(RPC框架支持的协议：dubbo(默认端口20880)、rmi、hession...)-->
+    <dubbo:protocol name="dubbo" port="20881"></dubbo:protocol>
+    <!--    4.dubbo配置，支持注解(Service类上可以使用@Service)，支持配置文件-->
+    <dubbo:annotation package="com.xxm.service"></dubbo:annotation>
+</beans>
